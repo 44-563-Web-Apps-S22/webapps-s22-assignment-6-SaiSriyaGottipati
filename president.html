@@ -37,6 +37,33 @@
     }
      }
         </script>
+           <label>Image changes on click</label><br>
+           <div class="container">
+               <img src="goose.jpg" id="image" alt="goose" style="height: 100px;width: 100px;" onclick="swapImage()">
+           </div>
+       
+           <script>
+               let useImage = 1;
+               function swapImage() {
+                   switch (useImage) {
+                       case 1:
+                           document.getElementById("image").src = "goose.jpg";
+                           useImage++;
+                           break;
+                       case 2:
+                           document.getElementById("image").src = "penguin.jpg";
+                           useImage++;
+                           break;
+                       case 3:
+                           document.getElementById("image").src = "owl.jpg";
+                           useImage++;
+                           break;
+                       default:
+                           document.getElementById("image").src = "goose.jpg";
+                           break;
+                   }
+               }
+           </script>
     </form>
 </body>
 </html> 
