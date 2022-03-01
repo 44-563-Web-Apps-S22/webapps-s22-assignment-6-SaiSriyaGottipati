@@ -7,67 +7,67 @@
     <h3>president guess by  sai sriya gottipati</h3>
 <h2>Getting input</h2>
 
+
 <form>
-    <label for="input1"> entre the secret president name </label>
-    <input id="input1" type="password"  value="George Washington"> 
-    <br>
+    <label for="secret_president">Enter the secret president name</label>
+    <input type ="password" id="secret_president" name="secret_president" min=2 max=50 value="George Washington"> <br>
+<br>
+    <label for="guess_president">Guess the president</label>
+    <input type ="text" id="guess_president" name="guess_president" autofocus>
+     <br>
 
-    <label for="input2">Guess the president</label>
-    <input id="input2" type="text">
-    <input type="button" value="Check the guess" onclick="checkGuess()">
-    <div id="result">The correct/wrong count will be displayed here</div>
+ 
+    <input type="button" onclick="checkGuess()" value="Check the guess">
+</form>
+
+
+<p id="result">click on image to swapImage...</p>
+
 <script> 
+  var correct=0;
+  var wrong =0;
 
- var correct=0;
-    var wrong=0;
+function checkGuess (){
+    console.log("Getting form values")
+    secret = document.getElementById("secret_president").value
+    guess = document.getElementById("guess_president").value
+
     
-    function checkGuess(){
-    secret= document.getElementById("input1").value
-    guess= document.getElementById("input2").value
     out = document.getElementById("result")
-    if(secret==guess)
-    {
-    correct++;
-    alert("You got it right")
-    out.innerHTML = "Correct count:"+correct+"  Wrong count:"+wrong
-    }else{
-    wrong++;
-    alert("Wrong President")
-    out.innerHTML = "Correct count:"+correct+"  Wrong count:"+wrong
+    if(secret==guess){
+        correct++;
+        alert("You got it right");
+        
+    } else {
+       alert("Wrong President");
+       wrong++;
     }
-     }
-        </script>
-    </form>
-    
+    out.innerHTML = "correct = "+correct +"   wrong = " + wrong;
+}
+</script>
 
-           <label>Image changes on click</label><br>
-           <div class="container">
-               <img src="goose.jpg" id="image" alt="goose" style="height: 100px;width: 100px;" onclick="swapImage()">
-           </div>
-       
-       <script>
-               let useImage = 1;
-               function swapImage() {
-                   switch (useImage) {
-                       case 1:
-                           document.getElementById("image").src = "goose.jpg";
-                           useImage++;
-                           break;
-                       case 2:
-                           document.getElementById("image").src = "penguin.jpg";
-                           useImage++;
-                           break;
-                       case 3:
-                           document.getElementById("image").src = "owl.jpg";
-                           useImage++;
-                           break;
-                       default:
-                           document.getElementById("image").src = "goose.jpg";
-                           break;
-                   }
-               }
-           </script>
-    </form>
->>>>>>> 13fef99e5ce6016076994ade09a00605e3691d59
+<div class="container">
+<img src="goose1.jpg" id="img" alt="goose1" width="100" height="100"  onclick="swapImage()">
+
+<script>
+    var useImage=1;
+    function swapImage(){
+        switch(useImage){
+            case 1:
+             document.getElementById("img").src="goose1.jpg";
+             useImage=2;
+             break;
+            case 2:
+             document.getElementById("img").src="owl.jpg";
+             useImage=3;
+             break;
+            case 3:document.getElementById("img").src="penguin.jpg";
+            useImage=1;
+             break;
+        
+        }
+    }
+</script>
+</div>
 </body>
 </html> 
