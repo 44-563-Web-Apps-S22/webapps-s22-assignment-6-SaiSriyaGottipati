@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
- <head>page for calculating tips</head>
+ <head>
+     <title>Computing Tips</title>
+ </head>
 <body>
 
-<h2> computes tips</h2>
+<h2> calculating tips below :</h2>
 
 <form>
-    <label for="check_amount">Enter a check amount </label>
-    <input type ="number" id="check" name="check" value=20> 
-    <br>
+    <label for="amount">Enter a check amount </label>
+    <input type ="number" id="amount"  value="20"> <br>
 
     <label for="tip_increase">Enter tip increase</label>
-    <input type ="number" id="tip" name="tip" value=0.05>
-     <br>
+    <input type ="number" id="tip_increase" value="0.05"> <br>
 
     <input type="button" onclick="tips()" value="Find tips">
 </form>
@@ -24,60 +24,55 @@
 
 function tips(){
     console.log("Getting form values")
-    var amount = document.getElementById("check").value
-    var tip = document.getElementById("tip").value
-    var result="Tip amounts "
-    result="Tip amounts by increase of "+tip+" are:"
+    var a = document.getElementById("amount").value
+    var tip = document.getElementById("tip_increase").value
+    var result="Tip amounts by increase of "+tip+" are:"
  
- var sum=amount*0.1
+ var sum=a*0.1
  result+=sum+0.0
 
- for(let i=0;i<9;i++){
-  var z=sum +(amount*tip);
+ for(let i=1;i<10;i++){
+  var z=sum +(a*tip);
   result += ", "+Math.round(z * 10) / 10
   sum=Math.round(z * 10) / 10
+  }
+document.getElementById('result').innerHTML=result;
 }
-document.getElementById('result').innerHTML=result
+</script>
+<form>
+    <input type="radio" id="*" value="times" name= "radio_1" onclick="chooseOp()" >
+    <label for="*">*</label></br>
+  
+    <input type="radio" id="/" value="divide" name="radio_1" onclick="chooseOp()">
+    <label for="/">/</label></br>
+  
+    <input type="radio" id="**"  value="exponent" name="radio_1" onclick="chooseOp()">
+    <label for="**">**</label></br>
+</form>    
+    <p id="results2"> perform operation</p>
+
+    <script>
+    function chooseOp(){
+
+    
+     var a = document.getElementById("amount").value
+     var tip = document.getElementById("tip_increase").value
+     exponent=document.getElementById("**").checked 
+     times=document.getElementById("*").checked
+     divide=document.getElementById("/").checked
+ 
+if(exponent){
+document.getElementById('results2').innerHTML="<b>(Amount ** TipIncrease) Value is: </b>"+a**tip
 }
+else if(times){
+document.getElementById('results2').innerHTML="<b>(Amount * TipIncrease) Value is: </b>"+a*tip
 
-function chooseOp()
-{
-    var amount = document.getElementById("check").value
-    var tip = document.getElementById("tip").value
-     exponent= document.getElementById("radio_3").checked
-     times= document.getElementById("radio_1").checked
-     divide=  document.getElementById("radio_2").checked
-
-    if(exponent)
-    {
-        document.getElementById('results').innerHTML="(amount ** Tip) value is:"+amount**tip
-    }
-
-    else if(times)
-    {  
-        document.getElementById('results').innerHTML="(amount * Tip) value is:"+amount*tip
-    }
-    else if(divide)
-    {   
-       
-        document.getElementById('results').innerHTML="(amount / Tip) value is:"+amount/tip   
-    }
+}else if(divide){
+document.getElementById('results2').innerHTML="<b>(Amount / TipIncrease) value is: </b>"+a/tip
+}
 }
 </script>
 
-<form>
-    <input type="radio" id="radio_1" name="radio_1"  value="times"  onclick="chooseOp()">
-    <label for="radio_1">*</label></br>
-  
-    <input type="radio" id="radio_2" name="radio_1" onclick="chooseOp()" value="divide">
-    <label for="radio_2">/</label></br>
-  
-    <input type="radio" id="radio_3" name="radio_1"  onclick="chooseOp()" value="exponent">
-    <label for="radio_3">**</label></br>
-  
-  </form>
-
-  <p id="results">operation result</p>
 
 </body>
-</html>
+</html> 
