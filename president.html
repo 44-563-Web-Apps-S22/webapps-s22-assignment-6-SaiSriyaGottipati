@@ -6,45 +6,82 @@
 <body>
     <h3>president guess by  sai sriya gottipati</h3>
 <h2>Getting input</h2>
-
-
-<form>
-    <label for="secret_president">Enter the secret president name</label>
-    <input type ="password" id="secret_president" name="secret_president" min=2 max=50 value="George Washington"> <br>
-<br>
-    <label for="guess_president">Guess the president</label>
-    <input type ="text" id="guess_president" name="guess_president" autofocus>
-     <br>
-
- 
-    <input type="button" onclick="checkGuess()" value="Check the guess">
-</form>
-
-
-<p id="result">click on image to swapImage...</p>
-
-<script> 
-  var correct=0;
-  var wrong =0;
-
-function checkGuess (){
-    console.log("Getting form values")
-    secret = document.getElementById("secret_president").value
-    guess = document.getElementById("guess_president").value
-
-    
-    out = document.getElementById("result")
-    if(secret==guess){
-        correct++;
-        alert("You got it right");
-        
-    } else {
-       alert("Wrong President");
-       wrong++;
+<style>
+    label {
+        display: inline-block;
+        width: 200px;
     }
-    out.innerHTML = "correct = "+correct +"   wrong = " + wrong;
-}
-</script>
+    
+    p {
+        background-color: rgba(223, 171, 223, 0.623);
+        color: black;
+        display: inline;
+    }
+    
+    p:hover {
+        background-color: rgb(131, 193, 243);
+        color: black;
+        display: inline;
+    }
+    
+    h1 {
+        background-color: rgb(64, 7, 97);
+        color: white;
+        display: inline-block;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    </style>
+
+<body>
+    <h1>President guess by Sreeja Kumbhum</h1>
+    <form>
+        <label for="form1_president_label">Enter the secret president name</label>
+        <input type ="password" id="form1_president" name="form1_president" min=10 max=50 step=2 value="George Washington"> <br>
+    
+        <label for="form1_guess_label">Guess the president </label>
+        <input type ="text" id="form1_guess" name="form1_guess" autofocus> <br>
+    
+        <input type="button" onclick="checkGuess()" id="in" value="Check the guess">
+        <br>
+        <br>
+    </form>
+       <br>
+    <p id="result">The results will be displayed here </p>
+    <br>
+    <br>
+    <script>
+       var correct=0
+        var wrong=0  
+        var c = 0
+    function checkGuess(){
+       
+        console.log("Getting form values")
+       var secret = document.getElementById("form1_president").value
+        var guess = document.getElementById("form1_guess").value
+        out = document.getElementById("result")
+        if(secret==guess){
+            correct= correct+1
+            alert('You got it right')
+            out.innerHTML = "correct trace "+correct + " Wrong trace "+ wrong
+            c = 0
+        } else {
+            wrong=wrong+1
+            alert('Wrong President')
+            out.innerHTML = "correct trace "+correct + " Wrong trace "+ wrong
+            c = c+1
+            console.log(c)
+        }
+    
+        if(c == 3){
+            document.getElementById("in").onclick = lock
+        }
+    
+        function lock(){
+                alert("Sorry, game over.")
+            }
+    
+    }
+    </script>
 
 <div class="container">
 <img src="goose1.jpg" id="img" alt="goose1" width="100" height="100"  onclick="swapImage()">
